@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Space_Mono, Karla, Inter } from "next/font/google";
 import "@/styles/globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
+import Script from "next/script";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -53,6 +55,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <Script src="https://www.google.com/recaptcha/api.js?render=6LeSqJIpAAAAAHCvycHggB9fMrBC6KJ77meHbSzj" />
+      </head>
       <body
         className={`${spaceGrotesk.variable} ${spaceMono.variable} ${karla.variable} font-sans antialiased min-h-screen`}
       >
@@ -67,6 +72,7 @@ export default function RootLayout({
             <div className="max-w-screen-xl mx-auto">
               {children}
             </div>
+            <Toaster />
             <Footer />
           </div>
         </ThemeProvider>

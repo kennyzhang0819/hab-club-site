@@ -11,7 +11,7 @@ const navigationLinks = {
   main: [
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About' },
-    { href: '/contact', label: 'Contact' },
+    { href: '/sponsor', label: 'Sponsor Us' },
   ],
   initiatives: [
     { href: 'http://cubstart.com', label: 'Cubstart' },

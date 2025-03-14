@@ -2,6 +2,10 @@
 
 import Image from 'next/image'
 import { useState } from 'react'
+import { createClient } from '@/utils/supabase/client'
+import { toast } from "sonner"
+
+
 
 export function Hero() {
   const [email, setEmail] = useState('')
@@ -9,21 +13,16 @@ export function Hero() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     try {
-      const response = await fetch('https://api.calhacks.io/static/subscribe', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email,
-          list: 'ch',
-        }),
-      })
-
-      if (response.status === 204) {
-        setEmail('')
-        // Could add a success toast here
+      const supabase = createClient()
+      const { data, error } = await supabase.from('club-site-interest-form').insert({ email })
+      if (error) {
+        console.error('Error submitting form:', error)
+        toast.error('Error submitting form')
       }
+
+      toast.success('Successfully signed up for updates!')
+      setEmail('')
+
     } catch (error) {
       console.error('Error submitting form:', error)
       // Could add an error toast here
