@@ -4,8 +4,8 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { createClient } from '@/utils/supabase/client'
 import { toast } from "sonner"
-
-
+import { FloatingSpritesContainer } from './FloatingSpritesContainer'
+import Link from 'next/link'
 
 export function Hero() {
   const [email, setEmail] = useState('')
@@ -35,42 +35,15 @@ export function Hero() {
         {/* Left side - Image */}
         <div className="relative w-full md:w-1/2">
           <Image
-            src="https://calhacks-sierra.s3.us-west-2.amazonaws.com/assets/hackathonsatberkeley/coding-ddoski.png"
+            src="/branding/coding-ddoski.svg"
             alt="Coding Ddoski"
             width={500}
             height={500}
-            className="w-full h-auto dark:brightness-110 dark:contrast-105"
+            className="dark:brightness-110 dark:contrast-105"
           />
-          <div className="absolute top-0 left-0 w-full h-full">
-            <Image
-              src="https://calhacks-sierra.s3.us-west-2.amazonaws.com/assets/9.0/splash_icon_1"
-              alt="Splash Icon 1"
-              width={50}
-              height={50}
-              className="absolute top-1/4 left-1/4 animate-float dark:brightness-110"
-            />
-            <Image
-              src="https://calhacks-sierra.s3.us-west-2.amazonaws.com/assets/9.0/splash_icon_2"
-              alt="Splash Icon 2"
-              width={50}
-              height={50}
-              className="absolute top-1/2 right-1/4 animate-float delay-200 dark:brightness-110"
-            />
-            <Image
-              src="https://calhacks-sierra.s3.us-west-2.amazonaws.com/assets/9.0/splash_icon_3"
-              alt="Splash Icon 3"
-              width={50}
-              height={50}
-              className="absolute bottom-1/4 left-1/3 animate-float delay-400 dark:brightness-110"
-            />
-            <Image
-              src="https://calhacks-sierra.s3.us-west-2.amazonaws.com/assets/9.0/splash_icon_4"
-              alt="Splash Icon 4"
-              width={50}
-              height={50}
-              className="absolute top-1/3 right-1/3 animate-float delay-600 dark:brightness-110"
-            />
-          </div>
+          
+          {/* Floating sprites */}
+          <FloatingSpritesContainer containerWidth={400} baseScale={0.4} count={2} />
         </div>
 
         {/* Right side - Content */}
@@ -82,7 +55,7 @@ export function Hero() {
             Hackathons @ Berkeley is a team of students cultivating a platform where people can build, learn, and experiment
             without boundaries. We host Cal Hacks, our flagship hackathon, alongside other hackathons every year!
             <br /><br />
-            Fill out our <b className="text-gray-900 dark:text-white">early interest form</b> and be the first to hear about our next event! It'll be <b className="text-gray-900 dark:text-white">October 18th-20th</b> in downtown SF.
+            Our next event is <Link href="https://ai.calhacks.io/" className="font-bold hover:underline text-primary">UC Berkeley AI Hackathon 2025</Link>! Enter your email for more future updates.
           </p>
 
           <form onSubmit={handleSubmit} className="max-w-md mx-auto md:mx-0">

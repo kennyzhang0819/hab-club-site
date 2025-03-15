@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Space_Mono, Karla, Inter } from "next/font/google";
 import "@/styles/globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Navbar } from "@/components/navbar";
-import { Footer } from "@/components/footer";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 import Script from "next/script";
 import { Toaster } from "@/components/ui/sonner";
 

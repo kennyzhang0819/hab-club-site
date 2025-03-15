@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
 import ThemeSwitch from '@/components/theme-switch'
@@ -10,7 +10,7 @@ import ThemeSwitch from '@/components/theme-switch'
 const navigationLinks = {
   main: [
     { href: '/', label: 'Home' },
-    { href: '/about', label: 'About' },
+    { href: '/about', label: 'Team' },
     { href: '/sponsor', label: 'Sponsor Us' },
   ],
   initiatives: [
@@ -25,6 +25,8 @@ const navigationLinks = {
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isInitiativesOpen, setIsInitiativesOpen] = useState(false)
+  const initiativesRef = useRef<HTMLDivElement>(null)
   const pathname = usePathname()
   const { theme, setTheme } = useTheme()
 
@@ -34,12 +36,26 @@ export function Navbar() {
     setTheme(theme === 'dark' ? 'light' : 'dark')
   }
 
+  // Close initiatives dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (initiativesRef.current && !initiativesRef.current.contains(event.target as Node)) {
+        setIsInitiativesOpen(false)
+      }
+    }
+    
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
+
   return (
     <nav className="relative w-full px-6 py-4 border-b border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <Link href="/">
           <Image
-            src="https://calhacks-sierra.s3.us-west-2.amazonaws.com/assets/hackathonsatberkeley/hackathons-at-berkeley-logo.png"
+            src="/logo/logo.webp"
             alt="Hackathons at Berkeley Logo"
             width={200}
             height={50}
@@ -80,22 +96,37 @@ export function Navbar() {
               {navigationLinks.featured.label}
               <span className="absolute -bottom-1 left-0 w-full h-[3px] bg-primary dark:bg-primary/90 transform origin-left transition-transform duration-300 scale-x-0 group-hover:scale-x-100 rounded-full" />
             </Link>
-            <div className="relative group">
-              <button className="text-lg font-bold text-gray-600 dark:text-gray-300 group-hover:text-primary dark:group-hover:text-primary/90 transition-colors duration-200 py-2 relative">
-                Other Initiatives
-                <span className="absolute -bottom-1 left-0 w-full h-[3px] bg-primary dark:bg-primary/90 transform origin-left transition-transform duration-300 scale-x-0 group-hover:scale-x-100 rounded-full" />
+            <div className="relative" ref={initiativesRef}>
+              <button 
+                className={`text-lg font-bold ${isInitiativesOpen ? 'text-primary dark:text-primary/90' : 'text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary/90'} transition-colors duration-200 py-2 relative flex items-center`}
+                onClick={() => setIsInitiativesOpen(!isInitiativesOpen)}
+                aria-expanded={isInitiativesOpen}
+                aria-haspopup="true"
+              >
+                Past Initiatives
+                <svg 
+                  className={`ml-1 h-4 w-4 transition-transform duration-200 ${isInitiativesOpen ? 'rotate-180' : ''}`} 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  viewBox="0 0 20 20" 
+                  fill="currentColor"
+                >
+                  <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+                <span className={`absolute -bottom-1 left-0 w-full h-[3px] bg-primary dark:bg-primary/90 transform origin-left transition-transform duration-300 ${isInitiativesOpen ? 'scale-x-100' : 'scale-x-0 hover:scale-x-100'} rounded-full`} />
               </button>
-              <div className="absolute hidden group-hover:block right-0 mt-2 w-56 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg shadow-lg dark:shadow-gray-900/30 transform-gpu transition-all duration-300 ease-out opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0">
-                {navigationLinks.initiatives.map((item) => (
-                  <a 
-                    key={item.href}
-                    href={item.href} 
-                    className="block px-4 py-3 text-base font-bold text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary/90 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-all duration-200 first:rounded-t-lg last:rounded-b-lg"
-                  >
-                    {item.label}
-                  </a>
-                ))}
-              </div>
+              {isInitiativesOpen && (
+                <div className="absolute right-0 mt-2 w-56 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg shadow-lg dark:shadow-gray-900/30 z-10">
+                  {navigationLinks.initiatives.map((item) => (
+                    <a 
+                      key={item.href}
+                      href={item.href} 
+                      className="block px-4 py-3 text-base font-bold text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary/90 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-all duration-200 first:rounded-t-lg last:rounded-b-lg"
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </div>
+              )}
             </div>
             <ThemeSwitch />
           </div>

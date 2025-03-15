@@ -1,7 +1,6 @@
 import Image from 'next/image'
-import Link from 'next/link'
-import { EmailCopy } from '@/components/EmailCopy'
 import { directors } from '@/data/directors'
+
 export default function AboutPage() {
   return (
     <main className="min-h-screen">
@@ -11,7 +10,7 @@ export default function AboutPage() {
           <div className="flex flex-col md:flex-row items-center gap-12">
             <div className="w-full md:w-1/2 relative rounded-2xl overflow-hidden shadow-xl">
               <Image 
-                src="/img/team.jpg" 
+                src="/images/team.jpg" 
                 alt="Hackathons at Berkeley Team" 
                 width={800} 
                 height={600}
@@ -35,64 +34,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
-      {/* Initiatives Section */}
-      <section className="py-20 px-6">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-12 text-center">
-            Initiatives
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div className="flex flex-col md:flex-row items-center gap-6">
-              <div className="w-full md:w-1/2 relative">
-                <div className="relative w-full aspect-square rounded-full overflow-hidden border-4 border-primary/20">
-                  <Image
-                    src="https://calhacks-sierra.s3-us-west-2.amazonaws.com/assets/branding/fellowship.png"
-                    alt="Cal Hacks"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              </div>
-              <div className="w-full md:w-1/2">
-                <a href="https://apply.calhacks.io" target="_blank" rel="noopener noreferrer">
-                  <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white hover:text-primary dark:hover:text-primary/90 transition-colors">
-                    Hackathon
-                  </h3>
-                </a>
-                <p>
-                  Cal Hacks, our flagship hackathon hosted in San Francisco, is
-                  where the technology of the future is born.
-                </p>
-              </div>
-            </div>
-            <div className="flex flex-col md:flex-row items-center gap-6">
-              <div className="w-full md:w-1/2 relative">
-                <div className="relative w-full aspect-square rounded-full overflow-hidden border-4 border-primary/20">
-                  <Image
-                    src="https://calhacks-sierra.s3-us-west-2.amazonaws.com/assets/branding/cubstart.png"
-                    alt="Cubstart"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              </div>
-              <div className="w-full md:w-1/2">
-                <a href="http://cubstart.com" target="_blank" rel="noopener noreferrer">
-                  <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white hover:text-primary dark:hover:text-primary/90 transition-colors">
-                    Cubstart
-                  </h3>
-                </a>
-                <p className="text-gray-700 dark:text-gray-300">
-                  A program for new hackers designed to make the hackathon
-                  experience less intimidating but more accessible!
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
 
       {/* Team Section */}
       <section className="py-20 px-6">
@@ -123,7 +64,7 @@ export default function AboutPage() {
           <div className="mt-16 text-center">
             <p className="text-lg ">
               Have a question for us? Email{' '}
-              <EmailCopy email="team@calhacks.io" />
+              <a href="mailto:team@calhacks.io">team@calhacks.io</a>
             </p>
           </div>
         </div>
