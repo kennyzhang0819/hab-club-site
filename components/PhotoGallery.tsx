@@ -117,29 +117,14 @@ export function PhotoGallery() {
           ))}
         </div>
 
-        {/* Event info */}
-        <div className="mb-12">
-          <div className="flex flex-col md:flex-row items-center gap-8 bg-gray-50 dark:bg-gray-800 rounded-xl p-6 shadow-sm">
-            <div className="w-full md:w-1/3 relative aspect-video rounded-lg overflow-hidden">
-              <Image
-                src={currentEvent.coverImage}
-                alt={currentEvent.name}
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="w-full md:w-2/3">
-              <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">
-                {currentEvent.name}
-              </h3>
-              <p className="text-gray-500 dark:text-gray-400 mb-4">
-                {currentEvent.date}
-              </p>
-              <p className="text-gray-700 dark:text-gray-300">
-                {currentEvent.description}
-              </p>
-            </div>
-          </div>
+        {/* Event title and date */}
+        <div className="text-center mb-8">
+          <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">
+            {currentEvent.name}
+          </h3>
+          <p className="text-gray-500 dark:text-gray-400">
+            {currentEvent.date}
+          </p>
         </div>
 
         {/* Horizontal photo scroller */}
@@ -206,10 +191,6 @@ export function PhotoGallery() {
           </AnimatePresence>
         </div>
         
-        {/* Photo count indicator */}
-        <div className="mt-6 text-center text-gray-500 dark:text-gray-400">
-          Showing {currentEvent.photos.length} photos from {currentEvent.name}
-        </div>
       </div>
 
       {/* Lightbox */}

@@ -1,7 +1,6 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
 import { motion } from 'framer-motion'
 
 interface Initiative {
@@ -30,12 +29,9 @@ const initiatives: Initiative[] = [
     image: "/images/initiatives/cubstart.jpg",
     link: "http://cubstart.com"
   },
-
 ];
 
 export function Initiatives() {
-  const [activeIndex, setActiveIndex] = useState(0);
-
   return (
     <section className="py-24 px-6">
       <div className="max-w-7xl mx-auto">
@@ -48,76 +44,42 @@ export function Initiatives() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Left side - Initiative cards */}
-          <div className="space-y-6">
-            {initiatives.map((initiative, index) => (
-              <motion.div
-                key={initiative.name}
-                className={`p-6 rounded-xl cursor-pointer transition-all duration-300 ${activeIndex === index
-                    ? 'bg-primary/10 border-l-4 border-primary shadow-lg'
-                    : 'bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 shadow'
-                  }`}
-                onClick={() => setActiveIndex(index)}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 relative rounded-full overflow-hidden border-2 border-primary/20 flex-shrink-0">
-                    <Image
-                      src={initiative.image}
-                      alt={initiative.name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-1 text-gray-900 dark:text-white">
-                      {initiative.name}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm">
-                      {initiative.description}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Right side - Featured initiative */}
-          <motion.div
-            className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            key={activeIndex}
-          >
-            <div className="h-64 relative">
-              <Image
-                src={initiatives[activeIndex].image}
-                alt={initiatives[activeIndex].name}
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="p-6">
-
-              <h3 className="text-2xl font-bold text-white mb-2">
-                {initiatives[activeIndex].name}
-              </h3>
-              <p className="text-gray-700 dark:text-gray-300 mb-6">
-                {initiatives[activeIndex].description}
-              </p>
-              <a
-                href={initiatives[activeIndex].link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/80 transition-colors"
-              >
-                Learn More
-              </a>
-            </div>
-          </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {initiatives.map((initiative) => (
+            <motion.div
+              key={initiative.name}
+              className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm h-full flex flex-col"
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <div className="h-48 relative">
+                <Image
+                  src={initiative.image}
+                  alt={initiative.name}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6 flex-grow flex flex-col">
+                <h3 className="text-2xl font-bold mb-2">
+                  {initiative.name}
+                </h3>
+                <p className="text-gray-700 dark:text-gray-300 mb-6 flex-grow">
+                  {initiative.description}
+                </p>
+                <a
+                  href={initiative.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/80 transition-colors text-center"
+                >
+                  Learn More
+                </a>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

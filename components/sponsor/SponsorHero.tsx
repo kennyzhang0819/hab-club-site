@@ -9,7 +9,7 @@ export function SponsorHero() {
   }
 
   return (
-    <div className="relative min-h-[90vh] overflow-hidden">
+    <div className="relative overflow-hidden">
 
       <div className="max-w-7xl mx-auto px-6 pt-24 pb-16 md:pt-32 md:pb-24 relative z-0">
         <h1 className="text-5xl md:text-6xl font-bold font-heading mb-12 text-gray-900 dark:text-white">
@@ -58,22 +58,7 @@ export function SponsorHero() {
           </h4>
         </div>
 
-        {/* Down indicator */}
-        <button
-          onClick={scrollToContent}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 bg-white dark:bg-gray-700 rounded-full p-2 shadow-md hover:shadow-lg transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-600"
-          aria-label="Scroll to content"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 text-gray-600 dark:text-gray-300"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
+        
       </div>
     </div>
   )

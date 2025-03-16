@@ -1,9 +1,6 @@
-import Image from 'next/image'
 import { SponsorHero } from '@/components/sponsor/SponsorHero'
 import { SponsorStats } from '@/components/sponsor/SponsorStats'
-import { SponsorTestimonials } from '@/components/sponsor/SponsorTestimonials'
 import { SponsorPast } from '@/components/sponsor/SponsorPast'
-import { SponsorContact } from '@/components/sponsor/SponsorContact'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -17,9 +14,7 @@ export default function SponsorPage() {
       <SponsorHero />
       <div className="max-w-7xl mx-auto px-4 py-16 space-y-24">
         <SponsorStats />
-        <SponsorTestimonials />
         <SponsorPast />
-        <SponsorContact />
       </div>
     </main>
   )
