@@ -1,7 +1,12 @@
+"use client"
+
 import Image from 'next/image'
 import { directors } from '@/data/directors'
+import { useTheme } from 'next-themes';
 
 export default function AboutPage() {
+  const { theme, setTheme } = useTheme()
+
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
@@ -81,50 +86,69 @@ export default function AboutPage() {
             internships and full-time employment across a variety of industries.
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center justify-items-center">
+            <div className="w-full max-w-[120px] bg-white p-2 rounded-md">
+              <Image src="https://iili.io/HY6ZF8g.png" alt="google" width={120} height={60} className="w-full h-auto dark:brightness-110" />
+            </div>
+
+            <div className="w-full max-w-[120px] scale-75 mt-5 bg-white p-2 rounded-md">
+              <Image src="https://iili.io/HY6pdv9.png" alt="amazon-light" width={120} height={60} className="w-full h-auto dark:brightness-110" />
+            </div>
+
             <div className="w-full max-w-[120px]">
-              <Image src="https://iili.io/HY6ZF8g.png" alt="Company logo" width={120} height={60} className="w-full h-auto dark:brightness-110" />
+              <Image src="https://calhacks-sierra.s3.us-west-2.amazonaws.com/assets/9.0/sponsors/citadel.png" alt="citadel" width={120} height={60} className="w-full h-auto dark:brightness-110" />
             </div>
-            <div className="w-full max-w-[120px] scale-75 mt-5">
-              <Image src="https://iili.io/HY6pdv9.png" alt="Company logo" width={120} height={60} className="w-full h-auto dark:brightness-110" />
+
+            <div className="w-full max-w-[120px] scale-75">
+              <Image src="https://iili.io/HY6ZucX.png" alt="twitch" width={120} height={60} className="w-full h-auto dark:brightness-110" />
+            </div>
+            <div className="w-full max-w-[120px] scale-75">
+              {theme === "light" ? 
+              <Image src="https://iili.io/HY6ZwDx.png" alt="apple-light" width={120} height={60} className="w-full h-auto dark:brightness-110" />
+              :
+              <Image src="https://www.clker.com/cliparts/i/s/H/f/4/T/apple-logo-white-md.png" alt="amazon-dark" width={120} height={60} className="w-full h-auto dark:brightness-110" />
+              }
+            </div>
+            <div className="w-full max-w-[120px] scale-75">
+              <Image src="https://iili.io/HY6DXZx.png" alt="hrt" width={120} height={60} className="w-full h-auto dark:brightness-110" />
+            </div>
+            <div className="w-full max-w-[120px] scale-75">
+              <Image src="https://iili.io/HY6m7gS.png" alt="meta" width={120} height={60} className="w-full h-auto dark:brightness-110" />
+            </div>
+            <div className="w-full max-w-[120px] scale-75">
+              {theme === "light" ? 
+              <Image src="https://iili.io/HY6yOxa.png" alt="figma-light" width={120} height={60} className="w-full h-auto dark:brightness-110" />
+              :
+              <Image src="https://media.licdn.com/dms/image/v2/C5612AQFgggqsWPjx4w/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1539986347735?e=2147483647&v=beta&t=nC2fm-ttjIsRXzSBn5IgX0XIaW39pT-0t8Th4Z4Ll_o" alt="figma-dark" width={120} height={60} className="w-full h-auto dark:brightness-110" />
+              }
+            </div>
+            <div className="w-full max-w-[120px] scale-75">
+              {theme === "light" ? 
+              <Image src="https://iili.io/HYPF51s.png" alt="plaid-light" width={120} height={60} className="w-full h-auto dark:brightness-110" />
+              :
+              <Image src="https://prideglobal.com/images/client-successes/plaid.png" alt="figma-dark" width={120} height={60} className="w-full h-auto dark:brightness-110" />
+              }
             </div>
             <div className="w-full max-w-[120px]">
-              <Image src="https://calhacks-sierra.s3.us-west-2.amazonaws.com/assets/9.0/sponsors/citadel.png" alt="Company logo" width={120} height={60} className="w-full h-auto dark:brightness-110" />
+              {theme === "light" ? 
+              <Image src="https://iili.io/HYPKCGe.png" alt="github-light" width={120} height={60} className="w-full h-auto dark:brightness-110" />
+              :
+              <Image src="https://www.pngmart.com/files/23/Github-Logo-PNG-Clipart.png" alt="figma-dark" width={120} height={60} className="w-full h-auto dark:brightness-110" />
+              }
             </div>
             <div className="w-full max-w-[120px] scale-75">
-              <Image src="https://iili.io/HY6ZucX.png" alt="Company logo" width={120} height={60} className="w-full h-auto dark:brightness-110" />
-            </div>
-            <div className="w-full max-w-[120px] scale-75">
-              <Image src="https://iili.io/HY6ZwDx.png" alt="Company logo" width={120} height={60} className="w-full h-auto dark:brightness-110" />
-            </div>
-            <div className="w-full max-w-[120px] scale-75">
-              <Image src="https://iili.io/HY6DXZx.png" alt="Company logo" width={120} height={60} className="w-full h-auto dark:brightness-110" />
-            </div>
-            <div className="w-full max-w-[120px] scale-75">
-              <Image src="https://iili.io/HY6m7gS.png" alt="Company logo" width={120} height={60} className="w-full h-auto dark:brightness-110" />
-            </div>
-            <div className="w-full max-w-[120px] scale-75">
-              <Image src="https://iili.io/HY6yOxa.png" alt="Company logo" width={120} height={60} className="w-full h-auto dark:brightness-110" />
-            </div>
-            <div className="w-full max-w-[120px] scale-75">
-              <Image src="https://iili.io/HYPF51s.png" alt="Company logo" width={120} height={60} className="w-full h-auto dark:brightness-110" />
+              <Image src="https://iili.io/HYP9ep9.png" alt="waymo" width={120} height={60} className="w-full h-auto dark:brightness-110" />
             </div>
             <div className="w-full max-w-[120px]">
-              <Image src="https://iili.io/HYPKCGe.png" alt="Company logo" width={120} height={60} className="w-full h-auto dark:brightness-110" />
+              <Image src="https://iili.io/HY6ypJS.png" alt="roblox-light" width={120} height={60} className="w-full h-auto dark:brightness-110" />
             </div>
             <div className="w-full max-w-[120px] scale-75">
-              <Image src="https://iili.io/HYP9ep9.png" alt="Company logo" width={120} height={60} className="w-full h-auto dark:brightness-110" />
+              <Image src="https://iili.io/HYP9oe1.png" alt="uber-light" width={120} height={60} className="w-full h-auto dark:brightness-110" />
+            </div>
+            <div className="w-full max-w-[120px] scale-75">
+              <Image src="https://iili.io/HYPHbA7.png" alt="salesforce" width={120} height={60} className="w-full h-auto dark:brightness-110" />
             </div>
             <div className="w-full max-w-[120px]">
-              <Image src="https://iili.io/HY6ypJS.png" alt="Company logo" width={120} height={60} className="w-full h-auto dark:brightness-110" />
-            </div>
-            <div className="w-full max-w-[120px] scale-75">
-              <Image src="https://iili.io/HYP9oe1.png" alt="Company logo" width={120} height={60} className="w-full h-auto dark:brightness-110" />
-            </div>
-            <div className="w-full max-w-[120px] scale-75">
-              <Image src="https://iili.io/HYPHbA7.png" alt="Company logo" width={120} height={60} className="w-full h-auto dark:brightness-110" />
-            </div>
-            <div className="w-full max-w-[120px]">
-              <Image src="https://iili.io/HYP2CGa.png" alt="Company logo" width={120} height={60} className="w-full h-auto dark:brightness-110" />
+              <Image src="https://iili.io/HYP2CGa.png" alt="imc" width={120} height={60} className="w-full h-auto dark:brightness-110" />
             </div>
           </div>
         </div>
