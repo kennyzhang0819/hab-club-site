@@ -9,7 +9,7 @@ export function SponsorPast() {
         
         <div className="flex justify-center">
           <Image 
-            src="https://calhacks-sierra.s3.us-west-2.amazonaws.com/assets/9.0/ch_6_sponsor_grid_blue+1.svg"
+            src="/vectors/sponsors.svg"
             alt="Past sponsors grid"
             width={1000}
             height={600}
