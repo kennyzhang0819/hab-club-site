@@ -7,7 +7,12 @@ const nextConfig: NextConfig = {
       'calhacks-sierra.s3.us-west-2.amazonaws.com', 
       'calhacks-sierra.s3-us-west-2.amazonaws.com',
       'iili.io',
-      'upload.wikimedia.org'],
+      'www.clker.com',
+      'media.licdn.com',
+      'prideglobal.com',
+      'www.pngmart.com',
+      'upload.wikimedia.org'
+    ],
   },
 };
 
