@@ -12,7 +12,7 @@ export default function SponsorPage() {
   return (
     <main className="min-h-screen">
       <SponsorHero />
-      <div className="max-w-7xl mx-auto px-4 py-16 space-y-24">
+      <div className="max-w-7xl mx-auto px-4 py-4 space-y-24">
         <SponsorStats />
         <SponsorPast />
       </div>
